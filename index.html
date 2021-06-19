@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Toggle CRUD API Reference</title>
+    <title>API Documentation</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -285,14 +285,11 @@
     </style>
     <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-a9fde460.js"></script>
+      <script src="javascripts/all_nosearch-8f5ea5a5.js"></script>
 
-    <script>
-      $(function() { setupCodeCopy(); });
-    </script>
   </head>
 
-  <body class="index" data-languages="[&quot;http&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -301,249 +298,51 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo-559b9502.png" class="logo" alt="" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="http">HTTP</a>
-        </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#get-features" class="toc-h1 toc-link" data-title="Get Features">Get Features</a>
-          </li>
-          <li>
-            <a href="#get-feature" class="toc-h1 toc-link" data-title="Get Feature">Get Feature</a>
-          </li>
-          <li>
-            <a href="#post-feature" class="toc-h1 toc-link" data-title="Post Feature">Post Feature</a>
-          </li>
-          <li>
-            <a href="#patch-feature" class="toc-h1 toc-link" data-title="Patch Feature">Patch Feature</a>
-          </li>
-          <li>
-            <a href="#delete-feature" class="toc-h1 toc-link" data-title="Delete Feature">Delete Feature</a>
-          </li>
-          <li>
-            <a href="#status-codes" class="toc-h1 toc-link" data-title="Status Codes">Status Codes</a>
+            <a href="#pheature-flags-api" class="toc-h1 toc-link" data-title="Pheature Flags API">Pheature Flags API</a>
           </li>
       </ul>
-        <ul class="toc-footer">
-            <li><a href="https://github.com/pheature-flags" target="_blank">GitHub Repository</a></li>
-            <li><a href="https://pheatureflags.io" target="_blank">Documentation Site</a></li>
-        </ul>
-        <ul class="toc-footer">
-            <li><a href='https://github.com/slatedocs/slate' target="_blank">Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='get-features'>Get Features</h1>
-<p>This endpoint retrieves all features.</p>
-<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/features</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="s">[</span>
-<span class="s">  {</span>
-<span class="s">    "id": 1,</span>
-<span class="s">    "strategies": [</span>
-<span class="s">      {</span>
-<span class="s">        "id": "location-strategy",</span>
-<span class="s">        "payload": {</span>
-<span class="s">          "location": "barcelona"</span>
-<span class="s">        }</span>
-<span class="s">      }</span>
-<span class="s">    ],</span>
-<span class="s">    "isEnabled": true</span>
-<span class="s">  },</span>
-<span class="s">  {</span>
-<span class="s">    "id": 2,</span>
-<span class="s">    "strategies": [],</span>
-<span class="s">    "isEnabled": true</span>
-<span class="s">  }</span>
-<span class="s">]</span>
-</code></pre></div><h1 id='get-feature'>Get Feature</h1>
-<p>This endpoint retrieves a specific feature.</p>
-<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/features/{feature_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="s">{</span>
-<span class="s">  "id": 1,</span>
-<span class="s">  "strategies": [</span>
-<span class="s">    {</span>
-<span class="s">      "id": "location-strategy",</span>
-<span class="s">      "payload": {</span>
-<span class="s">        "location": "barcelona"</span>
-<span class="s">      }</span>
-<span class="s">    }</span>
-<span class="s">  ],</span>
-<span class="s">  "isEnabled": true</span>
-<span class="s">}</span>
-</code></pre></div>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>feature_id</td>
-<td>The ID of the feature to retrieve</td>
-</tr>
-</tbody></table>
-<h1 id='post-feature'>Post Feature</h1>
-<p>This endpoint creates a feature.</p>
-<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/feature/{feature_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
-</code></pre></div>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>feature_id</td>
-<td>The ID of the feature to create</td>
-</tr>
-</tbody></table>
-<h1 id='patch-feature'>Patch Feature</h1>
-<p>This endpoint patches a specific feature.</p>
+        <p>title: Pheature Flags API
+language_tabs:
+  - http: HTTP
+  - php: PHP
+  - python: Python
+  - javascript: Javascript
+  - go: Go
+  - shell: cURL
+language_clients:
+  - php: &quot;PHP&quot;
+  - python: &quot;Python&quot;
+  - javascript: &quot;Javascript&quot;
+  - go: &quot;Go&quot;
+  - shell: &quot;cURL&quot;
+toc_footers:
+  - <a href="https://github.com/pheature-flags" target="_blank">GitHub Repository</a>
+  - <a href="https://pheatureflags.io" target="_blank">Documentation Site</a>
+toc_subfooters:
+  - <a href='https://github.com/slatedocs/slate' target="_blank">Documentation Powered by Slate</a>
+includes: 
+  - client
+  - crud
+search: false
+highlight_theme: darkula
+headingLevel: 2</p>
+<h2 id='code_clipboard-true'>code_clipboard: true</h2>
+<h1 id="pheature-flags-api">Pheature Flags API</h1>
 
-<p>There are four different actions:</p>
+<blockquote>
+<p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
+</blockquote>
 
-<ul>
-<li>Enable Feature</li>
-<li>Disable Feature</li>
-<li>Add Strategy</li>
-<li>Remove Strategy</li>
-</ul>
-<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">/feature/{feature_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="s">{</span>
-<span class="s">  "action": "add_strategy",</span>
-<span class="s">  "value": {</span>
-<span class="s">    "strategy_id": "my-first-strategy",</span>
-<span class="s">    "strategy_type": "STRATEGY_TYPE"</span>
-<span class="s">  }</span>
-<span class="s">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">202</span> <span class="ne">Accepted</span>
-</code></pre></div>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>feature_id</td>
-<td>The ID of the feature to retrieve</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Action</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>enable_feature</td>
-<td>Enable Feature</td>
-</tr>
-<tr>
-<td>disable_feature</td>
-<td>Disable Feature</td>
-</tr>
-<tr>
-<td>add_strategy</td>
-<td>Add Strategy to Feature</td>
-</tr>
-<tr>
-<td>remove_strategy</td>
-<td>Remove Strategy to Feature</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Value</th>
-<th>Used in Action</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>strategy_id</td>
-<td>add_strategy, remove_strategy</td>
-</tr>
-<tr>
-<td>strategy_type</td>
-<td>add_strategy</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-Both <i>add_strategy</i> and <i>remove_strategy</i> require a `value` on the request body.
-</aside>
-
-<aside class="notice">
-Only <i>add_strategy</i> requires the  <i>strategy_type</i> on the request body.
-</aside>
-<h1 id='delete-feature'>Delete Feature</h1>
-<p>This endpoint deletes a specific feature.</p>
-<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/features/{feature_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">Deleted</span>
-</code></pre></div>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>feature_id</td>
-<td>The ID of the feature to delete</td>
-</tr>
-</tbody></table>
-<h1 id='status-codes'>Status Codes</h1>
-<p><a href="https://github.com/pheature-flags/toggle-crud-psr7-api">Toggle CRUD PSR7 API</a> uses the following HTTP status codes:</p>
-
-<table><thead>
-<tr>
-<th>Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>OK -- Request was successful</td>
-</tr>
-<tr>
-<td>201</td>
-<td>Created -- Feature created</td>
-</tr>
-<tr>
-<td>202</td>
-<td>Processed -- Feature patch processed</td>
-</tr>
-<tr>
-<td>204</td>
-<td>Deleted -- Feature deleted</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Bad Request -- Request is invalid</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- Specified feature was not found</td>
-</tr>
-</tbody></table>
+<p>This is the documentation of the Pheature Flags API</p>
 
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="http">HTTP</a>
-          </div>
       </div>
     </div>
   </body>
