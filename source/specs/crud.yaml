@@ -1,0 +1,122 @@
+openapi: 3.0.0
+info:
+  title: Pheature Flags CRUD API
+  description: This is the documentation of the Pheature Flags CRUD API
+  version: 1.0.0
+components:
+  parameters:
+    feature_id:
+      name: feature_id
+      in: path
+      description: Identifier of the Feature
+      required: true
+      schema:
+        type: string
+  schemas:
+    Feature:
+      type: object
+      properties:
+        id:
+          type: string
+        strategies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Strategy'
+        isEnabled:
+          type: boolean
+    Strategy:
+      type: object
+      properties:
+        id:
+          type: string
+        payload:
+          type: object
+  responses:
+    201Created:
+      description: The specified feature was created.
+    202Accepted:
+      description: The specified feature's patch was processed.
+    204Deleted:
+      description: The specified feature was deleted.
+    404NotFound:
+      description: The specified resource was not found.
+    400BadRequest:
+      description: The request is invalid.
+paths:
+  /features/{feature_id}:
+    get:
+      summary: Retrieves a specific feature
+      description: Retrieves a specific feature
+      tags:
+        - features
+      parameters:
+        - $ref: '#/components/parameters/feature_id'
+      responses:
+        '200':
+          description: Retrieves a specific feature
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Feature'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+    post:
+      summary: Creates a feature
+      description: Creates a feature
+      tags:
+        - features
+      parameters:
+        - $ref: '#/components/parameters/feature_id'
+      responses:
+        '201':
+          $ref: '#/components/responses/201Created'
+    patch:
+      summary: Modifies a specific feature
+      description: Modifies a specific feature
+      tags:
+        - features
+      parameters:
+        - $ref: '#/components/parameters/feature_id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  enum: [enable_feature, disable_feature, add_strategy, remove_strategy]
+                value:
+                  type: string
+                  enum: [strategy_id, strategy_type]
+      responses:
+        '202':
+          $ref: '#/components/responses/202Accepted'
+    delete:
+      summary: Deletes a specific feature
+      description: Deletes a specific feature
+      tags:
+        - features
+      parameters:
+        - $ref: '#/components/parameters/feature_id'
+      responses:
+        '204':
+          $ref: '#/components/responses/204Deleted'
+  /features:
+    get:
+      summary: Retrieves the list of features
+      description: Retrieves the list of features
+      tags:
+        - features
+      responses:
+        '200':
+          description: Retrieves the list of features.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Feature'
+        '404':
+          $ref: '#/components/responses/404NotFound'

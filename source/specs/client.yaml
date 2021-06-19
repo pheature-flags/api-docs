@@ -1,0 +1,81 @@
+openapi: 3.0.0
+info:
+  title: Pheature Flags Client API
+  description: This is the documentation of the Pheature Flags Client API
+  version: 1.0.0
+components:
+  parameters:
+    identity:
+      name: identity
+      in: header
+      description: Identifier of the Request
+      required: true
+      schema:
+        $ref: '#/components/schemas/Identity'
+    feature_id:
+      name: feature_id
+      in: path
+      description: Identifier of the Feature
+      required: true
+      schema:
+        type: string
+  schemas:
+    Feature:
+      type: object
+      properties:
+        feature_id:
+          type: string
+        enabled:
+          type: boolean
+    FeatureCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/Feature'
+    Identity:
+      type: object
+      required:
+        - identity_id
+      properties:
+        identity_id:
+            type: string
+        payload:
+            type: object          
+  responses:
+    404NotFound:
+      description: The specified resource was not found.
+paths:
+  /features:
+    get:
+      summary: Retrieves the list of features for the given identity.
+      description: Retrieves the list of features for the given identity.
+      tags:
+        - features
+      parameters:
+        - $ref: '#/components/parameters/identity'
+      responses:
+        '200':
+          description: Retrieves the list of features for the given identity.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureCollection'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+  /features/{feature_id}:
+    get:
+      summary: Retrieves a feature for the given feature id and identity.
+      description: Retrieves a feature for the given feature id and identity.
+      tags:
+        - features
+      parameters:
+        - $ref: '#/components/parameters/identity'
+        - $ref: '#/components/parameters/feature_id'
+      responses:
+        '200':
+          description: Retrieves a feature for the given feature id and identity.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Feature'
+        '404':
+          $ref: '#/components/responses/404NotFound'
