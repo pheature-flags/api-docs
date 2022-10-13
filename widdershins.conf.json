@@ -1,0 +1,13 @@
+{
+  "verbose": true,
+  "search": true,
+  "language_tabs": [
+    { "http": "HTTP" },
+    { "php": "PHP" },
+    { "python": "Python" },
+    { "javascript": "JavaScript" },
+    { "typescript": "Typescript" },
+    { "go": "Go" },
+    { "shell": "Bash" }
+  ]
+}
