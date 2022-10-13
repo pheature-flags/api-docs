@@ -1,4 +1,6 @@
-<h1 id="api-client">Client</h1>
+<h1 id="api-client">Client API</h1>
+
+> This API allows to check for features' status.
 
 ## Retrieves the list of features for the given identity.
 
@@ -8,7 +10,7 @@
 GET /features HTTP/1.1
 
 Accept: application/json
-identity: [object Object]
+Identity: eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg==
 
 ```
 
@@ -19,7 +21,7 @@ require 'vendor/autoload.php';
 
 $headers = array(
     'Accept' => 'application/json',
-    'identity' => '[object Object]',
+    'Identity' => 'eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg==',
 );
 
 $client = new \GuzzleHttp\Client();
@@ -48,10 +50,7 @@ try {
 import requests
 headers = {
   'Accept': 'application/json',
-  'identity': {
-  "identity_id": "string",
-  "payload": {}
-}
+  'Identity': 'eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg=='
 }
 
 r = requests.get('/features', headers = headers)
@@ -64,10 +63,7 @@ print(r.json())
 
 const headers = {
   'Accept':'application/json',
-  'identity':{
-  "identity_id": "string",
-  "payload": {}
-}
+  'Identity':'eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg=='
 };
 
 fetch('/features',
@@ -96,7 +92,7 @@ func main() {
 
     headers := map[string][]string{
         "Accept": []string{"application/json"},
-        "identity": []string{"[object Object]"},
+        "Identity": []string{"eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg=="},
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
@@ -114,7 +110,7 @@ func main() {
 # You can also use wget
 curl -X GET /features \
   -H 'Accept: application/json' \
-  -H 'identity: [object Object]'
+  -H 'Identity: eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg=='
 
 ```
 
@@ -160,7 +156,7 @@ This operation does not require authentication
 GET /features/{feature_id} HTTP/1.1
 
 Accept: application/json
-identity: [object Object]
+Identity: eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg==
 
 ```
 
@@ -171,7 +167,7 @@ require 'vendor/autoload.php';
 
 $headers = array(
     'Accept' => 'application/json',
-    'identity' => '[object Object]',
+    'Identity' => 'eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg==',
 );
 
 $client = new \GuzzleHttp\Client();
@@ -200,10 +196,7 @@ try {
 import requests
 headers = {
   'Accept': 'application/json',
-  'identity': {
-  "identity_id": "string",
-  "payload": {}
-}
+  'Identity': 'eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg=='
 }
 
 r = requests.get('/features/{feature_id}', headers = headers)
@@ -216,10 +209,7 @@ print(r.json())
 
 const headers = {
   'Accept':'application/json',
-  'identity':{
-  "identity_id": "string",
-  "payload": {}
-}
+  'Identity':'eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg=='
 };
 
 fetch('/features/{feature_id}',
@@ -248,7 +238,7 @@ func main() {
 
     headers := map[string][]string{
         "Accept": []string{"application/json"},
-        "identity": []string{"[object Object]"},
+        "Identity": []string{"eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg=="},
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
@@ -266,7 +256,7 @@ func main() {
 # You can also use wget
 curl -X GET /features/{feature_id} \
   -H 'Accept: application/json' \
-  -H 'identity: [object Object]'
+  -H 'Identity: eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg=='
 
 ```
 

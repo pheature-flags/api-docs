@@ -1,4 +1,6 @@
-<h1 id="api-crud">CRUD</h1>
+<h1 id="api-crud">CRUD API</h1>
+
+> This API allows to Create, Read, Update and Delete features.
 
 ## Retrieves a specific feature
 
