@@ -2,13 +2,13 @@
 <!doctype html>
 <html>
   <head>
-    <link href="images/favicon-6c6510bf.ico" rel="icon" type="image/ico" />
+    <link href="images/favicon-e3943502.ico" rel="icon" type="image/ico" />
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta
             name="description"
-            content="Documentation for the Kittn API"
+            content="Documentation for Pheature Flags API"
         >
     <title>Pheature Flags API</title>
 
@@ -304,7 +304,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-559b9502.png" class="logo" alt="" />
+      <img src="images/logo-e6c6f0d4.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="http">HTTP</a>
               <a href="#" data-language-name="php">PHP</a>
@@ -318,7 +318,7 @@
             <a href="#pheature-flags-api" class="toc-h1 toc-link" data-title="Pheature Flags API">Pheature Flags API</a>
           </li>
           <li>
-            <a href="#api-client" class="toc-h1 toc-link" data-title="Client">Client</a>
+            <a href="#api-client" class="toc-h1 toc-link" data-title="Client API">Client API</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#retrieves-the-list-of-features-for-the-given-identity" class="toc-h2 toc-link" data-title="Retrieves the list of features for the given identity.">Retrieves the list of features for the given identity.</a>
@@ -332,7 +332,7 @@
               </ul>
           </li>
           <li>
-            <a href="#api-crud" class="toc-h1 toc-link" data-title="CRUD">CRUD</a>
+            <a href="#api-crud" class="toc-h1 toc-link" data-title="CRUD API">CRUD API</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#retrieves-a-specific-feature" class="toc-h2 toc-link" data-title="Retrieves a specific feature">Retrieves a specific feature</a>
@@ -357,7 +357,8 @@
       </ul>
         <ul class="toc-footer">
             <li><a href="https://github.com/pheature-flags" target="_blank">GitHub Repository</a></li>
-            <li><a href="https://pheatureflags.io" target="_blank">Documentation Site</a></li>
+            <li><a href="https://pheatureflags.io" target="_blank">Pheature Flags Docs</a></li>
+            <li><a href="https://pheature-flags.github.io/internal-api" target="_blank">Internal API Docs</a></li>
         </ul>
         <ul class="toc-footer">
             <li><a href='https://github.com/slatedocs/slate' target="_blank">Documentation Powered by Slate</a></li>
@@ -372,8 +373,17 @@
 <p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
 </blockquote>
 
-<p>This is the documentation of the Pheature Flags API</p>
-<h1 id="api-client">Client</h1>
+<p>This is the documentation of the Pheature Flags APIs. It documents 2 API:</p>
+
+<ul>
+<li>Client API: <small>Used by clients to discover their associated features and its current status</small></li>
+<li>CRUD API: <small>Used by admins to create, read, update and delete features</small></li>
+</ul>
+<h1 id="api-client">Client API</h1>
+
+<blockquote>
+<p>This API allows to check for features&#39; status.</p>
+</blockquote>
 <h2 id='retrieves-the-list-of-features-for-the-given-identity'>Retrieves the list of features for the given identity.</h2>
 <blockquote>
 <p>Code samples</p>
@@ -381,7 +391,7 @@
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/features</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 Accept: application/json
-identity: [object Object]
+Identity: eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg==
 
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
@@ -389,7 +399,7 @@ identity: [object Object]
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
-    <span class="s1">'identity'</span> <span class="o">=&gt;</span> <span class="s1">'[object Object]'</span><span class="p">,</span>
+    <span class="s1">'Identity'</span> <span class="o">=&gt;</span> <span class="s1">'eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg=='</span><span class="p">,</span>
 <span class="p">);</span>
 
 <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">GuzzleHttp\Client</span><span class="p">();</span>
@@ -415,10 +425,7 @@ identity: [object Object]
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
-  <span class="s">'identity'</span><span class="p">:</span> <span class="p">{</span>
-  <span class="s">"identity_id"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
-  <span class="s">"payload"</span><span class="p">:</span> <span class="p">{}</span>
-<span class="p">}</span>
+  <span class="s">'Identity'</span><span class="p">:</span> <span class="s">'eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg=='</span>
 <span class="p">}</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'/features'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
@@ -428,10 +435,7 @@ identity: [object Object]
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">identity</span><span class="dl">'</span><span class="p">:{</span>
-  <span class="dl">"</span><span class="s2">identity_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">payload</span><span class="dl">"</span><span class="p">:</span> <span class="p">{}</span>
-<span class="p">}</span>
+  <span class="dl">'</span><span class="s1">Identity</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg==</span><span class="dl">'</span>
 <span class="p">};</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/features</span><span class="dl">'</span><span class="p">,</span>
@@ -457,7 +461,7 @@ identity: [object Object]
 
     <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
         <span class="s">"Accept"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span>
-        <span class="s">"identity"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"[object Object]"</span><span class="p">},</span>
+        <span class="s">"Identity"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg=="</span><span class="p">},</span>
     <span class="p">}</span>
 
     <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
@@ -472,7 +476,7 @@ identity: [object Object]
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> GET /features <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'identity: [object Object]'</span>
+  <span class="nt">-H</span> <span class="s1">'Identity: eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg=='</span>
 
 </code></pre></div>
 <p><code>GET /features</code></p>
@@ -545,7 +549,7 @@ This operation does not require authentication
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/features/{feature_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 
 Accept: application/json
-identity: [object Object]
+Identity: eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg==
 
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
@@ -553,7 +557,7 @@ identity: [object Object]
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
-    <span class="s1">'identity'</span> <span class="o">=&gt;</span> <span class="s1">'[object Object]'</span><span class="p">,</span>
+    <span class="s1">'Identity'</span> <span class="o">=&gt;</span> <span class="s1">'eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg=='</span><span class="p">,</span>
 <span class="p">);</span>
 
 <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">GuzzleHttp\Client</span><span class="p">();</span>
@@ -579,10 +583,7 @@ identity: [object Object]
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
-  <span class="s">'identity'</span><span class="p">:</span> <span class="p">{</span>
-  <span class="s">"identity_id"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
-  <span class="s">"payload"</span><span class="p">:</span> <span class="p">{}</span>
-<span class="p">}</span>
+  <span class="s">'Identity'</span><span class="p">:</span> <span class="s">'eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg=='</span>
 <span class="p">}</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'/features/{feature_id}'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
@@ -592,10 +593,7 @@ identity: [object Object]
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">identity</span><span class="dl">'</span><span class="p">:{</span>
-  <span class="dl">"</span><span class="s2">identity_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">payload</span><span class="dl">"</span><span class="p">:</span> <span class="p">{}</span>
-<span class="p">}</span>
+  <span class="dl">'</span><span class="s1">Identity</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg==</span><span class="dl">'</span>
 <span class="p">};</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/features/{feature_id}</span><span class="dl">'</span><span class="p">,</span>
@@ -621,7 +619,7 @@ identity: [object Object]
 
     <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
         <span class="s">"Accept"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span>
-        <span class="s">"identity"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"[object Object]"</span><span class="p">},</span>
+        <span class="s">"Identity"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg=="</span><span class="p">},</span>
     <span class="p">}</span>
 
     <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
@@ -636,7 +634,7 @@ identity: [object Object]
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> GET /features/<span class="o">{</span>feature_id<span class="o">}</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'identity: [object Object]'</span>
+  <span class="nt">-H</span> <span class="s1">'Identity: eyJpZGVudGl0eV9pZCI6ICJzdHJpbmciLCJwYXlsb2FkIjoge319Cg=='</span>
 
 </code></pre></div>
 <p><code>GET /features/{feature_id}</code></p>
@@ -821,7 +819,11 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h1 id="api-crud">CRUD</h1>
+<h1 id="api-crud">CRUD API</h1>
+
+<blockquote>
+<p>This API allows to Create, Read, Update and Delete features.</p>
+</blockquote>
 <h2 id='retrieves-a-specific-feature'>Retrieves a specific feature</h2>
 <blockquote>
 <p>Code samples</p>

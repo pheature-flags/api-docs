@@ -39,7 +39,7 @@ components:
         identity_id:
             type: string
         payload:
-            type: object          
+            type: object
   responses:
     404NotFound:
       description: The specified resource was not found.
